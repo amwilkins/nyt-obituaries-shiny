@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN install2.r --error --skipinstalled \
     shiny \
-    tidyverse \ 
+    dplyr \
     lubridate \
     data.table \
     ggplot2 \

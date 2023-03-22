@@ -7,6 +7,17 @@ on:
     branches: [ "main" ]
 
 jobs:
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+     -
+        name: Checkout
+        uses: actions/checkout@v3
+     -
+      name: deploy script
+      run: bash deploy.sh
+      
   build:
     runs-on: ubuntu-latest
     steps:
@@ -29,15 +40,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/obit:latest
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-     -
-        name: Checkout
-        uses: actions/checkout@v3
-     -
-      name: deploy script
-      run: bash deploy.sh
+          tags: ${{
  

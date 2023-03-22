@@ -19,6 +19,7 @@ jobs:
       run: bash deploy.sh
       
   build:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       -
@@ -40,5 +41,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{
  

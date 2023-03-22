@@ -7,8 +7,8 @@ cat ssh_key
 
 echo "Deploying via remote SSH"
 ssh -i ssh_key "root@74.208.91.172" 
-#  "docker pull amwilkins/obit:latest \
-#  && docker stop obit \
-#  && docker rm obit \
-#  && docker run -d --name obit -p 3838:3838 amwilkins/obit:latest \
-#  && docker system prune -af" # remove unused images to free up space
+  "docker pull amwilkins/obit:latest \
+  && docker stop obit \
+  && docker rm obit \
+  && docker run -d --name obit -p 3838:3838 amwilkins/obit:latest \
+  && docker system prune -af" # remove unused images to free up space

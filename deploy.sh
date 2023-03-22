@@ -1,5 +1,3 @@
-apt install -y openssh-client
-
 # Decode SSH key
 echo "${ACTION_KEY}" > ssh_key
 chmod 600 ssh_key # private keys need to have strict permission to be accepted by SSH agent

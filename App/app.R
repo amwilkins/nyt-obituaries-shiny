@@ -42,7 +42,7 @@ ratioPlot <- function(x){
 ui <- fluidPage(
 
 
-    titlePanel("New York Times Obituaries"),
+    titlePanel("New York Times Obituaries WITH CHANGES!! NEW ADDITIONS!!"),
 
     
     sidebarLayout(

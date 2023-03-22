@@ -6,7 +6,7 @@ cat ssh_key
 
 
 echo "Deploying via remote SSH"
-#ssh -i ssh_key "root@74.208.91.172" \
+ssh -i ssh_key "root@74.208.91.172" 
 #  "docker pull amwilkins/obit:latest \
 #  && docker stop obit \
 #  && docker rm obit \

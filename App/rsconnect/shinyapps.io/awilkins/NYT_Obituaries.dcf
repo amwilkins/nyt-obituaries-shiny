@@ -1,0 +1,13 @@
+name: NYT_Obituaries
+title: NYT_Obituaries
+username:
+account: awilkins
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5817307
+bundleId: 5663101
+url: https://awilkins.shinyapps.io/NYT_Obituaries/
+when: 1646853331.90706
+lastSyncTime: 1646853331.90711
+asMultiple: FALSE
+asStatic: FALSE

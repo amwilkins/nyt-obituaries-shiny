@@ -30,4 +30,12 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/obit:latest
-      - run: bash deploy.sh
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+     -
+      name: Install open-ssh
+      run: apt install open-ssh
+     -
+      name: deploy script
+      run: bash deploy.sh

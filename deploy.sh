@@ -1,4 +1,4 @@
-
+apt install -y openssh-client
 
 # Decode SSH key
 echo "${ACTION_KEY}" > ssh_key

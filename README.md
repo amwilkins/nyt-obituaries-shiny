@@ -1,5 +1,6 @@
 # nyt-obituaries-shiny
 shiny app exploring nyt obituaries
+but really just a stand in for learning github actions
 
 docker build -t obit .
 

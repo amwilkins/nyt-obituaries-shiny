@@ -30,7 +30,8 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
- 
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/obit:latest
+           
   deploy:
     needs: build
     runs-on: ubuntu-latest

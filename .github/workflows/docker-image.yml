@@ -35,9 +35,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      -
-      name: Install open-ssh
-      run: apt install open-ssh
-     -
       name: deploy script
       run: bash deploy.sh
  

@@ -21,27 +21,31 @@ jobs:
       - run: docker save -o obit_image.tar obit
       - run: scp -i ~/.ssh/private.key -o "StrictHostKeyChecking no" obit_image.tar root@74.208.91.172:/tmp
       - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker load -i /tmp/obit_image.tar"
+      - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker load -i /tmp/obit_image.tar"
+      - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker load -i /tmp/obit_image.tar"
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/obit:latest
+
+
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      -
+#        name: Checkout
+#        uses: actions/checkout@v3
+#      -
+#        name: Login to Docker Hub
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#      -
+#        name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v2
+#      -
+#        name: Build and push
+#        uses: docker/build-push-action@v4
+#        with:
+#          context: .
+#          file: ./Dockerfile
+#          push: true
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/obit:latest

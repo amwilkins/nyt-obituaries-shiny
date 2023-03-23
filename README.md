@@ -1,8 +1,6 @@
 # nyt-obituaries-shiny
-shiny app exploring nyt obituaries
+A R Shiny app exploring nyt obituaries.
 
-but really just a stand in for learning github actions
+(but really just a stand in for learning github actions)
 
-docker build -t obit .
-
-docker run --rm -p 3838:3838 --name obit obit
+When new code is pushed to main, a new container image is created and sent to a server which takes down the old container and re-creates one from the new image.

@@ -7,7 +7,21 @@ on:
     branches: [ "main" ]
 
 jobs:
-  
+  deploy:
+    #needs: build
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      - run: mkdir -p ~/.ssh/
+      - run: echo "${{ secrets.ACTION_KEY }}" > ~/.ssh/private.key
+      - run: chmod 600 ~/.ssh/private.key
+      - run: docker build -t obit .
+      - run: docker save -o obit_image.tar obit
+      - run: scp -i ~/.ssh/private.key -o "StrictHostKeyChecking no" obit_image.tar root@74.208.91.172:/tmp
+      - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker load -i /tmp/obit_image.tar"
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -31,13 +45,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/obit:latest
-           
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: mkdir -p ~/.ssh/
-      - run: echo "${{ secrets.ACTION_KEY }}" > ~/.ssh/private.key
-      - run: chmod 600 ~/.ssh/private.key
-      - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker pull amwilkins/obit:latest"
-

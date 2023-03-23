@@ -6,7 +6,7 @@
 library(lubridate)
 library(shiny)
 library(data.table)
-library(ggthemes)
+#library(ggthemes)
 library(dplyr)
 library(ggplot2)
 
@@ -42,7 +42,7 @@ ratioPlot <- function(x){
 ui <- fluidPage(
 
 
-    titlePanel("New York Times Obituaries WITH CHANGES!! NEW ADDITIONS!!"),
+    titlePanel("New York Times Obituaries"),
 
     
     sidebarLayout(
@@ -84,8 +84,8 @@ server <- function(input, output, session) {
     df %>% 
       ggplot(aes(x=Year))+
       geom_bar()+
-      labs(title='NYT Obituaries per Year')+
-      theme_fivethirtyeight()
+      labs(title='NYT Obituaries per Year')
+      # theme_fivethirtyeight()
   })
   
   # Changing term plot
@@ -93,8 +93,8 @@ server <- function(input, output, session) {
     plotObj() %>% 
       ggplot(aes(x=Year,y=n))+
       geom_col()+
-      geom_smooth(se=F,method='lm')+
-      theme_fivethirtyeight()
+      geom_smooth(se=F,method='lm')
+      # theme_fivethirtyeight()
   })
 
 }

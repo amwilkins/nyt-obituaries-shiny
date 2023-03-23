@@ -20,7 +20,7 @@ jobs:
       - run: docker save -o obit_image.tar obit
       - run: scp -i ~/.ssh/private.key -o "StrictHostKeyChecking no" obit_image.tar root@74.208.91.172:/tmp
       - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker load -i /tmp/obit_image.tar"
-      - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker kill obit"
+      - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker kill obit || true"
       - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker run --rm -d -p 3838:3838 --name obit obit"
       - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker image prune -f"
 

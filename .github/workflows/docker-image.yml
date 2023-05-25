@@ -18,6 +18,7 @@ jobs:
       - run: chmod 600 ~/.ssh/private.key
       - run: docker build -t obit .
       - run: docker save -o obit_image.tar obit
+      - run: scp -i ~/.ssh/private.key -o "StrictHostKeyChecking no" App/Visuals.nb.html root@74.208.91.172:/tmp
       - run: scp -i ~/.ssh/private.key -o "StrictHostKeyChecking no" obit_image.tar root@74.208.91.172:/tmp
       - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker load -i /tmp/obit_image.tar"
       - run: ssh -i ~/.ssh/private.key -o "StrictHostKeyChecking no" root@74.208.91.172 "docker kill obit || true"
